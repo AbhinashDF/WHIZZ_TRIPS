@@ -196,6 +196,45 @@ export class MemStorage implements IStorage {
         inclusions: ["All-inclusive meals & drinks", "Kids club & teen activities", "Water sports & beach access"],
         location: "Caribbean",
         createdAt: new Date()
+      },
+      {
+        id: randomUUID(),
+        title: "India Cultural Heritage",
+        description: "12 days exploring the Golden Triangle with authentic cultural experiences.",
+        imageUrl: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=500&h=300",
+        price: "2299",
+        duration: 12,
+        category: "cultural",
+        rating: "4.8",
+        inclusions: ["Taj Mahal & Red Fort tours", "Traditional dance performances", "Local cooking workshops"],
+        location: "India",
+        createdAt: new Date()
+      },
+      {
+        id: randomUUID(),
+        title: "Peru Machu Picchu Explorer",
+        description: "9 days discovering ancient Incan civilization and local traditions.",
+        imageUrl: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&w=500&h=300",
+        price: "2799",
+        duration: 9,
+        category: "cultural",
+        rating: "4.9",
+        inclusions: ["Machu Picchu guided tour", "Sacred Valley exploration", "Andean village visits"],
+        location: "Peru",
+        createdAt: new Date()
+      },
+      {
+        id: randomUUID(),
+        title: "Greece Island Mythology",
+        description: "10 days exploring ancient Greek culture across multiple islands.",
+        imageUrl: "https://images.unsplash.com/photo-1555993539-1732b0258734?auto=format&fit=crop&w=500&h=300",
+        price: "3199",
+        duration: 10,
+        category: "cultural",
+        rating: "4.7",
+        inclusions: ["Acropolis & Parthenon tours", "Archaeological site visits", "Traditional Greek cuisine"],
+        location: "Greece",
+        createdAt: new Date()
       }
     ];
 
