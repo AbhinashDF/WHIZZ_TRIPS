@@ -49,7 +49,7 @@ export default function About() {
       {/* Hero Section */}
       <section className="py-20 bg-primary text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl font-bold mb-6">About Wanderlust Travel</h1>
+          <h1 className="text-5xl font-bold mb-6">About WHIZZ TRAVELS</h1>
           <p className="text-xl max-w-3xl mx-auto">
             We're passionate about creating unforgettable travel experiences that connect you with the world's most beautiful destinations.
           </p>
@@ -63,7 +63,7 @@ export default function About() {
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
               <p className="text-lg text-gray-700 mb-6">
-                Founded in 2010, Wanderlust Travel began as a small family business with a simple mission: to make extraordinary travel accessible to everyone. Over the years, we've helped thousands of travelers discover new cultures, create lasting memories, and fulfill their wanderlust.
+                Founded in 2010, WHIZZ TRAVELS began as a small family business with a simple mission: to make extraordinary travel accessible to everyone. Over the years, we've helped thousands of travelers discover new cultures, create lasting memories, and fulfill their wanderlust.
               </p>
               <p className="text-lg text-gray-700 mb-6">
                 Today, we're proud to be one of the leading travel agencies, offering personalized service and expertly crafted itineraries that go beyond the ordinary tourist experience.

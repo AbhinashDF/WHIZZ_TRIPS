@@ -333,7 +333,15 @@ export class MemStorage implements IStorage {
 
   async createBooking(insertBooking: InsertBooking): Promise<Booking> {
     const id = randomUUID();
-    const booking: Booking = { ...insertBooking, id, status: "pending", createdAt: new Date() };
+    const booking: Booking = { 
+      ...insertBooking, 
+      id, 
+      status: "pending", 
+      createdAt: new Date(),
+      packageId: insertBooking.packageId || null,
+      phone: insertBooking.phone || null,
+      returnDate: insertBooking.returnDate || null
+    };
     this.bookings.set(id, booking);
     return booking;
   }
@@ -359,7 +367,14 @@ export class MemStorage implements IStorage {
 
   async createContact(insertContact: InsertContact): Promise<Contact> {
     const id = randomUUID();
-    const contact: Contact = { ...insertContact, id, createdAt: new Date() };
+    const contact: Contact = { 
+      ...insertContact, 
+      id, 
+      createdAt: new Date(),
+      phone: insertContact.phone || null,
+      subject: insertContact.subject || null,
+      newsletter: insertContact.newsletter || null
+    };
     this.contacts.set(id, contact);
     return contact;
   }
@@ -383,7 +398,12 @@ export class MemStorage implements IStorage {
 
   async createFlight(insertFlight: InsertFlight): Promise<Flight> {
     const id = randomUUID();
-    const flight: Flight = { ...insertFlight, id, createdAt: new Date() };
+    const flight: Flight = { 
+      ...insertFlight, 
+      id, 
+      createdAt: new Date(),
+      class: insertFlight.class || "economy"
+    };
     this.flights.set(id, flight);
     return flight;
   }
@@ -406,7 +426,12 @@ export class MemStorage implements IStorage {
 
   async createHotel(insertHotel: InsertHotel): Promise<Hotel> {
     const id = randomUUID();
-    const hotel: Hotel = { ...insertHotel, id, createdAt: new Date() };
+    const hotel: Hotel = { 
+      ...insertHotel, 
+      id, 
+      createdAt: new Date(),
+      distanceFromCenter: insertHotel.distanceFromCenter || null
+    };
     this.hotels.set(id, hotel);
     return hotel;
   }

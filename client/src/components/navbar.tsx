@@ -25,7 +25,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center">
             <Plane className="text-primary text-2xl mr-2" />
-            <span className="text-xl font-bold text-gray-900">Wanderlust Travel</span>
+            <span className="text-xl font-bold text-gray-900">WHIZZ TRAVELS</span>
           </Link>
           
           {/* Desktop Navigation */}

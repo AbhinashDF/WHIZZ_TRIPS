@@ -117,7 +117,7 @@ export default function Footer() {
               </p>
               <p className="flex items-center">
                 <Mail size={16} className="mr-2" />
-                info@wanderlusttravel.com
+                info@whizztravels.com
               </p>
               <p className="flex items-center">
                 <MapPin size={16} className="mr-2" />
@@ -129,7 +129,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            &copy; 2024 Wanderlust Travel. All rights reserved. | Privacy Policy | Terms of Service
+            &copy; 2024 WHIZZ TRAVELS. All rights reserved. | Privacy Policy | Terms of Service
           </p>
         </div>
       </div>

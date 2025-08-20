@@ -10,7 +10,12 @@ export default function Trips() {
   const [activeFilter, setActiveFilter] = useState("all");
 
   const { data: tripPackages, isLoading } = useQuery<TripPackage[]>({
-    queryKey: ["/api/trip-packages", activeFilter !== "all" ? { category: activeFilter } : {}],
+    queryKey: ["/api/trip-packages", activeFilter],
+    queryFn: async () => {
+      const url = activeFilter === "all" ? "/api/trip-packages" : `/api/trip-packages?category=${activeFilter}`;
+      const response = await fetch(url);
+      return response.json();
+    },
   });
 
   const filters = [

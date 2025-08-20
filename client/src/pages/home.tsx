@@ -36,7 +36,7 @@ export default function Home() {
     {
       name: "John & Sarah",
       trip: "Maldives Trip",
-      review: "Wanderlust Travel made our honeymoon absolutely perfect. Every detail was taken care of!",
+      review: "WHIZZ TRAVELS made our honeymoon absolutely perfect. Every detail was taken care of!",
       initials: "JS",
     },
     {

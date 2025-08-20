@@ -1,8 +1,8 @@
-# Wanderlust Travel - Full-Stack Travel Booking Application
+# WHIZZ TRAVELS - Full-Stack Travel Booking Application
 
 ## Overview
 
-Wanderlust Travel is a modern full-stack travel booking application that provides users with a comprehensive platform to discover destinations, browse travel packages, and make bookings. The application features a clean, responsive design with a focus on user experience and includes functionality for browsing destinations, viewing trip packages filtered by category, booking travel arrangements, and contacting the company.
+WHIZZ TRAVELS is a modern full-stack travel booking application that provides users with a comprehensive platform to discover destinations, browse travel packages, and make bookings. The application features a clean, responsive design with a focus on user experience and includes functionality for browsing destinations, viewing trip packages filtered by category, booking travel arrangements, and contacting the company.
 
 The system is built as a single-page application with a React frontend and Express.js backend, utilizing PostgreSQL for data persistence and modern development tools for a robust development experience.
 

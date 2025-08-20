@@ -74,7 +74,7 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email Addresses",
-      details: ["info@wanderlusttravel.com", "bookings@wanderlusttravel.com"],
+      details: ["info@whizztravels.com", "bookings@whizztravels.com"],
     },
     {
       icon: Clock,
@@ -207,7 +207,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Phone Number</FormLabel>
                           <FormControl>
-                            <Input type="tel" {...field} />
+                            <Input type="tel" {...field} value={field.value || ""} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -220,7 +220,7 @@ export default function Contact() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Subject</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <Select onValueChange={field.onChange} defaultValue={field.value || ""}>
                             <FormControl>
                               <SelectTrigger>
                                 <SelectValue placeholder="Select a subject" />
@@ -264,7 +264,7 @@ export default function Contact() {
                         <FormItem className="flex flex-row items-start space-x-3 space-y-0">
                           <FormControl>
                             <Checkbox
-                              checked={field.value}
+                              checked={field.value || false}
                               onCheckedChange={field.onChange}
                             />
                           </FormControl>
