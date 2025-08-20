@@ -8,8 +8,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center mb-4">
-              <Plane className="text-primary text-2xl mr-2" />
-              <span className="text-xl font-bold">Wanderlust Travel</span>
+              <div className="relative">
+                <Plane className="text-primary text-3xl mr-3" />
+                <div className="absolute -top-1 -right-1 w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+              </div>
+              <div className="flex flex-col">
+                <span className="whizz-logo text-white">WHIZZ TRAVELS</span>
+                <span className="whizz-tagline">Your Journey Begins Here</span>
+              </div>
             </div>
             <p className="text-gray-400 mb-4">
               Creating unforgettable travel experiences since 2010. Your journey begins with us.

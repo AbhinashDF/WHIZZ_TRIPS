@@ -19,8 +19,8 @@ export default function Booking() {
   const [activeTab, setActiveTab] = useState("flights");
   const [flightSearchResults, setFlightSearchResults] = useState<Flight[]>([]);
   const [hotelSearchResults, setHotelSearchResults] = useState<Hotel[]>([]);
-  const [showFlightResults, setShowFlightResults] = useState(false);
-  const [showHotelResults, setShowHotelResults] = useState(false);
+  const [showFlightResults, setShowFlightResults] = useState(true);
+  const [showHotelResults, setShowHotelResults] = useState(true);
   const { toast } = useToast();
 
   // Get package ID from URL if present
@@ -34,6 +34,16 @@ export default function Booking() {
   const { data: hotels } = useQuery<Hotel[]>({
     queryKey: ["/api/hotels"],
   });
+
+  // Initialize results with all flights and hotels
+  useEffect(() => {
+    if (flights && flights.length > 0) {
+      setFlightSearchResults(flights);
+    }
+    if (hotels && hotels.length > 0) {
+      setHotelSearchResults(hotels);
+    }
+  }, [flights, hotels]);
 
   const bookingForm = useForm<InsertBooking>({
     resolver: zodResolver(insertBookingSchema.extend({
@@ -85,13 +95,17 @@ export default function Booking() {
     const to = formData.get('to') as string;
     
     // Filter flights based on search criteria
-    const filtered = flights?.filter(flight => {
-      const fromMatch = !from || flight.from.toLowerCase().includes(from.toLowerCase());
-      const toMatch = !to || flight.to.toLowerCase().includes(to.toLowerCase());
-      return fromMatch && toMatch;
-    }) || [];
-    
-    setFlightSearchResults(filtered);
+    if (!from && !to) {
+      // Show all flights if no search criteria
+      setFlightSearchResults(flights || []);
+    } else {
+      const filtered = flights?.filter(flight => {
+        const fromMatch = !from || flight.from.toLowerCase().includes(from.toLowerCase());
+        const toMatch = !to || flight.to.toLowerCase().includes(to.toLowerCase());
+        return fromMatch && toMatch;
+      }) || [];
+      setFlightSearchResults(filtered);
+    }
     setShowFlightResults(true);
   };
 
@@ -101,14 +115,17 @@ export default function Booking() {
     const destination = formData.get('destination') as string;
     
     // Filter hotels based on search criteria
-    const filtered = hotels?.filter(hotel => {
-      const locationMatch = !destination || 
-        hotel.location.toLowerCase().includes(destination.toLowerCase()) ||
-        hotel.name.toLowerCase().includes(destination.toLowerCase());
-      return locationMatch;
-    }) || [];
-    
-    setHotelSearchResults(filtered);
+    if (!destination) {
+      // Show all hotels if no search criteria
+      setHotelSearchResults(hotels || []);
+    } else {
+      const filtered = hotels?.filter(hotel => {
+        const locationMatch = hotel.location.toLowerCase().includes(destination.toLowerCase()) ||
+          hotel.name.toLowerCase().includes(destination.toLowerCase());
+        return locationMatch;
+      }) || [];
+      setHotelSearchResults(filtered);
+    }
     setShowHotelResults(true);
   };
 
@@ -257,7 +274,7 @@ export default function Booking() {
             {/* Flight Results */}
             {showFlightResults && (
               <div className="mt-8">
-                <h3 className="text-xl font-bold mb-6">Available Flights</h3>
+                <h3 className="text-xl font-bold mb-6">Available Flights ({flightSearchResults.length} found)</h3>
                 <div className="space-y-4">
                   {flightSearchResults.map((flight) => (
                     <Card key={flight.id} className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
@@ -348,7 +365,7 @@ export default function Booking() {
             {/* Hotel Results */}
             {showHotelResults && (
               <div className="mt-8">
-                <h3 className="text-xl font-bold mb-6">Available Hotels</h3>
+                <h3 className="text-xl font-bold mb-6">Available Hotels ({hotelSearchResults.length} found)</h3>
                 <div className="grid grid-cols-1 gap-6">
                   {hotelSearchResults.map((hotel) => (
                     <Card key={hotel.id} className="bg-white rounded-lg shadow-md overflow-hidden">

@@ -23,9 +23,15 @@ export default function Navbar() {
     <nav className="bg-white shadow-lg fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="flex items-center">
-            <Plane className="text-primary text-2xl mr-2" />
-            <span className="text-xl font-bold text-gray-900">WHIZZ TRAVELS</span>
+          <Link href="/" className="flex items-center group">
+            <div className="relative">
+              <Plane className="text-primary text-3xl mr-3 transform group-hover:rotate-12 transition-transform duration-300" />
+              <div className="absolute -top-1 -right-1 w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+            </div>
+            <div className="flex flex-col">
+              <span className="whizz-logo">WHIZZ TRAVELS</span>
+              <span className="whizz-tagline hidden sm:block">Your Journey Begins Here</span>
+            </div>
           </Link>
           
           {/* Desktop Navigation */}

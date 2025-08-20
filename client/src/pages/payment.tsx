@@ -45,10 +45,14 @@ export default function Payment() {
   const [totalAmount, setTotalAmount] = useState(0);
   const { toast } = useToast();
 
-  // Get package ID from URL
+  // Get booking details from URL
   const urlParams = new URLSearchParams(window.location.search);
   const packageId = urlParams.get('package');
+  const flightId = urlParams.get('id');
+  const hotelId = urlParams.get('id');
+  const bookingType = urlParams.get('type') || 'package';
   const urlTravelers = parseInt(urlParams.get('travelers') || '1');
+  const urlPrice = urlParams.get('price');
 
   const { data: tripPackage } = useQuery<TripPackage>({
     queryKey: ["/api/trip-packages", packageId],
@@ -56,7 +60,27 @@ export default function Payment() {
       const response = await fetch(`/api/trip-packages/${packageId}`);
       return response.json();
     },
-    enabled: !!packageId,
+    enabled: !!packageId && bookingType === 'package',
+  });
+
+  const { data: flight } = useQuery({
+    queryKey: ["/api/flights", flightId],
+    queryFn: async () => {
+      const response = await fetch("/api/flights");
+      const flights = await response.json();
+      return flights.find((f: any) => f.id === flightId);
+    },
+    enabled: !!flightId && bookingType === 'flight',
+  });
+
+  const { data: hotel } = useQuery({
+    queryKey: ["/api/hotels", hotelId],
+    queryFn: async () => {
+      const response = await fetch("/api/hotels");
+      const hotels = await response.json();
+      return hotels.find((h: any) => h.id === hotelId);
+    },
+    enabled: !!hotelId && bookingType === 'hotel',
   });
 
   const form = useForm<PaymentData>({
@@ -79,12 +103,32 @@ export default function Payment() {
   const paymentMethod = form.watch("paymentMethod");
 
   useEffect(() => {
-    if (tripPackage) {
+    if (bookingType === 'package' && tripPackage) {
       setSelectedPackage(tripPackage);
       setTravelers(urlTravelers);
       setTotalAmount(parseFloat(tripPackage.price) * urlTravelers);
+    } else if (bookingType === 'flight' && flight) {
+      setSelectedPackage({ 
+        ...flight, 
+        title: `${flight.airline} Flight`, 
+        location: `${flight.from} to ${flight.to}`,
+        duration: flight.duration,
+        imageUrl: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=300&h=200'
+      });
+      setTravelers(urlTravelers);
+      setTotalAmount(parseFloat(urlPrice || flight.price));
+    } else if (bookingType === 'hotel' && hotel) {
+      setSelectedPackage({
+        ...hotel,
+        title: hotel.name,
+        location: hotel.location,
+        duration: '1 night',
+        price: hotel.pricePerNight
+      });
+      setTravelers(urlTravelers);
+      setTotalAmount(parseFloat(urlPrice || hotel.pricePerNight));
     }
-  }, [tripPackage, urlTravelers]);
+  }, [tripPackage, flight, hotel, urlTravelers, urlPrice, bookingType]);
 
   const paymentMutation = useMutation({
     mutationFn: async (data: PaymentData) => {
@@ -150,10 +194,8 @@ export default function Payment() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">No package selected</h1>
-          <Link href="/trips">
-            <Button>Browse Packages</Button>
-          </Link>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Loading booking details...</h1>
+          <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full mx-auto"></div>
         </div>
       </div>
     );
