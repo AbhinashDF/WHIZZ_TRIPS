@@ -106,7 +106,7 @@ export default function TripPackageCard({ tripPackage, onBook }: TripPackageCard
         
         <Button
           className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors"
-          onClick={() => onBook?.(tripPackage.id)}
+          onClick={() => window.location.href = `/payment?package=${tripPackage.id}&travelers=1&type=package`}
         >
           Book Now - ${tripPackage.price}
         </Button>

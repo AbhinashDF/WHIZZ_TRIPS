@@ -1,13 +1,18 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
-import { Plane, Bed, Map, Star } from "lucide-react";
+import { Plane, Bed, Map, Star, Globe } from "lucide-react";
 import HeroSection from "@/components/hero-section";
 import DestinationCard from "@/components/destination-card";
+import InteractiveMap from "@/components/interactive-map";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { Destination } from "@shared/schema";
 
 export default function Home() {
+  const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
+  
   const { data: destinations, isLoading } = useQuery<Destination[]>({
     queryKey: ["/api/destinations"],
   });
@@ -66,29 +71,54 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Destinations</h2>
-            <p className="text-xl text-gray-600">Discover our most popular travel destinations</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Explore Destinations</h2>
+            <p className="text-xl text-gray-600">Discover our most popular travel destinations worldwide</p>
           </div>
 
-          {isLoading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[...Array(4)].map((_, i) => (
-                <div key={i} className="bg-gray-200 animate-pulse rounded-xl h-96" />
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {featuredDestinations.map((destination) => (
-                <DestinationCard
-                  key={destination.id}
-                  destination={destination}
-                  onViewDetails={() => {
-                    // Navigate to trip details or booking page
+          <Tabs defaultValue="grid" className="w-full">
+            <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto mb-8">
+              <TabsTrigger value="grid" className="flex items-center gap-2">
+                <Bed size={16} />
+                Grid View
+              </TabsTrigger>
+              <TabsTrigger value="map" className="flex items-center gap-2">
+                <Globe size={16} />
+                Map View
+              </TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="grid">
+              {isLoading ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {[...Array(4)].map((_, i) => (
+                    <div key={i} className="bg-gray-200 animate-pulse rounded-xl h-96" />
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {featuredDestinations.map((destination) => (
+                    <DestinationCard
+                      key={destination.id}
+                      destination={destination}
+                    />
+                  ))}
+                </div>
+              )}
+            </TabsContent>
+            
+            <TabsContent value="map">
+              {destinations && (
+                <InteractiveMap
+                  destinations={destinations}
+                  selectedDestination={selectedDestination}
+                  onDestinationClick={(dest) => {
+                    setSelectedDestination(dest);
+                    window.location.href = `/destination/${dest.id}`;
                   }}
                 />
-              ))}
-            </div>
-          )}
+              )}
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 

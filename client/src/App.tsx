@@ -9,6 +9,9 @@ import About from "@/pages/about";
 import Contact from "@/pages/contact";
 import Trips from "@/pages/trips";
 import Booking from "@/pages/booking";
+import DestinationDetails from "@/pages/destination-details";
+import Payment from "@/pages/payment";
+import BookingConfirmation from "@/pages/booking-confirmation";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
@@ -20,6 +23,9 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/trips" component={Trips} />
       <Route path="/booking" component={Booking} />
+      <Route path="/destination/:id" component={DestinationDetails} />
+      <Route path="/payment" component={Payment} />
+      <Route path="/booking-confirmation" component={BookingConfirmation} />
       <Route component={NotFound} />
     </Switch>
   );

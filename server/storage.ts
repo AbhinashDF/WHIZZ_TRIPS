@@ -267,6 +267,58 @@ export class MemStorage implements IStorage {
         price: "899",
         class: "economy",
         createdAt: new Date()
+      },
+      {
+        id: randomUUID(),
+        airline: "Japan Airlines",
+        from: "LAX",
+        to: "NRT",
+        departureTime: "11:30",
+        arrivalTime: "15:45+1",
+        duration: "11h 15m",
+        stops: 0,
+        price: "1299",
+        class: "economy",
+        createdAt: new Date()
+      },
+      {
+        id: randomUUID(),
+        airline: "Air France",
+        from: "JFK",
+        to: "CDG",
+        departureTime: "22:15",
+        arrivalTime: "11:30+1",
+        duration: "7h 15m",
+        stops: 0,
+        price: "789",
+        class: "economy",
+        createdAt: new Date()
+      },
+      {
+        id: randomUUID(),
+        airline: "Kenya Airways",
+        from: "JFK",
+        to: "NBO",
+        departureTime: "06:45",
+        arrivalTime: "05:30+1",
+        duration: "14h 45m",
+        stops: 1,
+        price: "1199",
+        class: "economy",
+        createdAt: new Date()
+      },
+      {
+        id: randomUUID(),
+        airline: "Qatar Airways",
+        from: "LAX",
+        to: "MLE",
+        departureTime: "14:20",
+        arrivalTime: "06:15+2",
+        duration: "22h 55m",
+        stops: 2,
+        price: "1599",
+        class: "economy",
+        createdAt: new Date()
       }
     ];
 
@@ -298,6 +350,58 @@ export class MemStorage implements IStorage {
         description: "Modern hotel in the heart of Tokyo with easy access to attractions",
         starRating: 4,
         distanceFromCenter: "2 miles from city center",
+        createdAt: new Date()
+      },
+      {
+        id: randomUUID(),
+        name: "Le Marais Boutique Hotel",
+        location: "Paris, France",
+        imageUrl: "https://images.unsplash.com/photo-1455587734955-081b22074882?auto=format&fit=crop&w=300&h=200",
+        rating: "4.8",
+        pricePerNight: "245",
+        amenities: ["Historic building", "Breakfast", "Concierge", "Free WiFi"],
+        description: "Charming boutique hotel in the historic Marais district",
+        starRating: 4,
+        distanceFromCenter: "1 mile from Louvre",
+        createdAt: new Date()
+      },
+      {
+        id: randomUUID(),
+        name: "Safari Lodge Kenya",
+        location: "Kenya",
+        imageUrl: "https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=300&h=200",
+        rating: "4.9",
+        pricePerNight: "399",
+        amenities: ["Safari tours", "Restaurant", "Pool", "Nature view"],
+        description: "Authentic safari lodge with stunning wildlife views",
+        starRating: 4,
+        distanceFromCenter: "15 miles from Nairobi",
+        createdAt: new Date()
+      },
+      {
+        id: randomUUID(),
+        name: "Taj Palace Hotel",
+        location: "India",
+        imageUrl: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=300&h=200",
+        rating: "4.6",
+        pricePerNight: "125",
+        amenities: ["Traditional decor", "Spa", "Restaurant", "Cultural tours"],
+        description: "Magnificent palace hotel showcasing Indian heritage",
+        starRating: 5,
+        distanceFromCenter: "3 miles from Taj Mahal",
+        createdAt: new Date()
+      },
+      {
+        id: randomUUID(),
+        name: "Santorini Cliffside Resort",
+        location: "Greece",
+        imageUrl: "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?auto=format&fit=crop&w=300&h=200",
+        rating: "4.9",
+        pricePerNight: "295",
+        amenities: ["Sea view", "Infinity pool", "Restaurant", "Sunset terrace"],
+        description: "Stunning cliffside resort with breathtaking Aegean Sea views",
+        starRating: 5,
+        distanceFromCenter: "2 miles from Oia",
         createdAt: new Date()
       }
     ];

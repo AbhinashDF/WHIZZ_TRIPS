@@ -24,7 +24,7 @@ export default function DestinationCard({ destination, onViewDetails }: Destinat
           <Button
             variant="ghost"
             className="text-primary hover:text-primary/80 font-medium"
-            onClick={() => onViewDetails?.(destination.id)}
+            onClick={() => window.location.href = `/destination/${destination.id}`}
           >
             View Details
           </Button>

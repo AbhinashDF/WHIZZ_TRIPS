@@ -80,13 +80,35 @@ export default function Booking() {
 
   const handleFlightSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setFlightSearchResults(flights || []);
+    const formData = new FormData(event.currentTarget);
+    const from = formData.get('from') as string;
+    const to = formData.get('to') as string;
+    
+    // Filter flights based on search criteria
+    const filtered = flights?.filter(flight => {
+      const fromMatch = !from || flight.from.toLowerCase().includes(from.toLowerCase());
+      const toMatch = !to || flight.to.toLowerCase().includes(to.toLowerCase());
+      return fromMatch && toMatch;
+    }) || [];
+    
+    setFlightSearchResults(filtered);
     setShowFlightResults(true);
   };
 
   const handleHotelSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setHotelSearchResults(hotels || []);
+    const formData = new FormData(event.currentTarget);
+    const destination = formData.get('destination') as string;
+    
+    // Filter hotels based on search criteria
+    const filtered = hotels?.filter(hotel => {
+      const locationMatch = !destination || 
+        hotel.location.toLowerCase().includes(destination.toLowerCase()) ||
+        hotel.name.toLowerCase().includes(destination.toLowerCase());
+      return locationMatch;
+    }) || [];
+    
+    setHotelSearchResults(filtered);
     setShowHotelResults(true);
   };
 
@@ -192,11 +214,11 @@ export default function Booking() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="from">From</Label>
-                      <Input id="from" placeholder="Departure city or airport" className="mt-2" />
+                      <Input id="from" name="from" placeholder="Departure city or airport" className="mt-2" />
                     </div>
                     <div>
                       <Label htmlFor="to">To</Label>
-                      <Input id="to" placeholder="Destination city or airport" className="mt-2" />
+                      <Input id="to" name="to" placeholder="Destination city or airport" className="mt-2" />
                     </div>
                   </div>
 
@@ -261,8 +283,11 @@ export default function Booking() {
                         </div>
                         <div className="text-right">
                           <div className="text-2xl font-bold text-primary">${flight.price}</div>
-                          <Button className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg">
-                            Select
+                          <Button 
+                            className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg"
+                            onClick={() => window.location.href = `/payment?type=flight&id=${flight.id}&price=${flight.price}`}
+                          >
+                            Select Flight
                           </Button>
                         </div>
                       </div>
@@ -285,7 +310,7 @@ export default function Booking() {
                 <form onSubmit={handleHotelSearch} className="space-y-6">
                   <div>
                     <Label htmlFor="destination">Destination</Label>
-                    <Input id="destination" placeholder="Enter city or hotel name" className="mt-2" />
+                    <Input id="destination" name="destination" placeholder="Enter city or hotel name" className="mt-2" />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -350,8 +375,11 @@ export default function Booking() {
                           <div className="text-right">
                             <div className="text-2xl font-bold text-primary">${hotel.pricePerNight}</div>
                             <div className="text-sm text-gray-600">per night</div>
-                            <Button className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg mt-2">
-                              Book Now
+                            <Button 
+                              className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg mt-2"
+                              onClick={() => window.location.href = `/payment?type=hotel&id=${hotel.id}&price=${hotel.pricePerNight}`}
+                            >
+                              Book Hotel
                             </Button>
                           </div>
                         </div>
