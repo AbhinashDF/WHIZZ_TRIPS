@@ -1,0 +1,22 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-next",
+    "ms-vscode.vscode-eslint",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense",
+    "ms-vscode.vscode-json",
+    "ms-vscode-remote.remote-containers",
+    "ms-vscode.vscode-node-azure-pack",
+    "ms-vscode.hexeditor",
+    "ms-vscode.live-server",
+    "ritwickdey.liveserver",
+    "ms-vscode.vscode-react-native",
+    "streetsidesoftware.code-spell-checker",
+    "ms-vscode.vscode-css-peek",
+    "ms-vscode.vscode-html-css-support",
+    "ms-playwright.playwright",
+    "ms-vscode.vscode-emmet"
+  ]
+}
