@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Twitter, Youtube, CheckCircle } from "lucide-react";
+import OfficeMap from "@/components/office-map";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -312,12 +313,75 @@ export default function Contact() {
             <p className="text-xl text-gray-600">Come see us in person to plan your perfect getaway</p>
           </div>
           
-          {/* Mock Map Container */}
-          <div className="bg-gray-200 rounded-xl h-96 flex items-center justify-center">
-            <div className="text-center">
-              <MapPin className="text-6xl text-gray-400 mb-4 mx-auto" size={96} />
-              <p className="text-gray-600 text-lg font-medium">Interactive Map</p>
-              <p className="text-sm text-gray-500 mt-2">123 Travel Street, New York, NY 10001</p>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Interactive Map */}
+            <div className="lg:col-span-2">
+              <OfficeMap 
+                address="123 Travel Street, New York, NY 10001"
+                city="New York"
+                coordinates={{ lat: 40.7128, lng: -74.0060 }}
+              />
+            </div>
+            
+            {/* Office Details */}
+            <div className="space-y-6">
+              <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl p-6 border border-primary/20">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Office Details</h3>
+                
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <MapPin className="text-primary mr-3 mt-1" size={20} />
+                    <div>
+                      <p className="font-semibold">Address</p>
+                      <p className="text-gray-600 text-sm">123 Travel Street<br />New York, NY 10001<br />United States</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <Clock className="text-primary mr-3 mt-1" size={20} />
+                    <div>
+                      <p className="font-semibold">Business Hours</p>
+                      <div className="text-gray-600 text-sm space-y-1">
+                        <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+                        <p>Saturday: 10:00 AM - 4:00 PM</p>
+                        <p>Sunday: Closed</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <Phone className="text-primary mr-3 mt-1" size={20} />
+                    <div>
+                      <p className="font-semibold">Contact</p>
+                      <div className="text-gray-600 text-sm space-y-1">
+                        <p>Main: +1 (555) 123-4567</p>
+                        <p>Emergency: +1 (555) 987-6543</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                <h4 className="font-semibold text-amber-800 mb-2">Getting Here</h4>
+                <div className="text-amber-700 text-sm space-y-1">
+                  <p>🚇 Subway: Union Square (4,5,6,L,N,Q,R,W)</p>
+                  <p>🚌 Bus: Multiple routes available</p>
+                  <p>🚗 Parking: Street parking & nearby garages</p>
+                  <p>🚶 Walkable from major attractions</p>
+                </div>
+              </div>
+              
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <h4 className="font-semibold text-green-800 mb-2">Services Available</h4>
+                <div className="text-green-700 text-sm space-y-1">
+                  <p>✓ In-person travel consultation</p>
+                  <p>✓ Trip planning & booking</p>
+                  <p>✓ Travel document assistance</p>
+                  <p>✓ Group booking services</p>
+                  <p>✓ Emergency travel support</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
