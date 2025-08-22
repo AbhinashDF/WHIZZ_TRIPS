@@ -22,30 +22,42 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.facebook.com/whizztravels"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-primary transition-colors"
-                aria-label="Facebook"
+                aria-label="Follow us on Facebook"
+                data-testid="link-facebook"
               >
                 <Facebook size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/whizztravels"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-primary transition-colors"
-                aria-label="Instagram"
+                aria-label="Follow us on Instagram"
+                data-testid="link-instagram"
               >
                 <Instagram size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.twitter.com/whizztravels"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-primary transition-colors"
-                aria-label="Twitter"
+                aria-label="Follow us on Twitter"
+                data-testid="link-twitter"
               >
                 <Twitter size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.youtube.com/c/whizztravels"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-primary transition-colors"
-                aria-label="YouTube"
+                aria-label="Subscribe to our YouTube channel"
+                data-testid="link-youtube"
               >
                 <Youtube size={20} />
               </a>

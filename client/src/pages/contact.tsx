@@ -85,10 +85,10 @@ export default function Contact() {
   ];
 
   const socialLinks = [
-    { icon: Facebook, label: "Facebook" },
-    { icon: Instagram, label: "Instagram" },
-    { icon: Twitter, label: "Twitter" },
-    { icon: Youtube, label: "YouTube" },
+    { icon: Facebook, label: "Facebook", url: "https://www.facebook.com/whizztravels" },
+    { icon: Instagram, label: "Instagram", url: "https://www.instagram.com/whizztravels" },
+    { icon: Twitter, label: "Twitter", url: "https://www.twitter.com/whizztravels" },
+    { icon: Youtube, label: "YouTube", url: "https://www.youtube.com/c/whizztravels" },
   ];
 
   return (
@@ -139,9 +139,12 @@ export default function Contact() {
                     return (
                       <a
                         key={index}
-                        href="#"
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors"
-                        aria-label={social.label}
+                        aria-label={`Follow us on ${social.label}`}
+                        data-testid={`link-${social.label.toLowerCase()}`}
                       >
                         <IconComponent size={20} />
                       </a>
