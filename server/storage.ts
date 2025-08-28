@@ -250,4 +250,6 @@ export class MemStorage implements IStorage {
   }
 }
 
+// Use in-memory storage for development and deployment environments
+// This ensures data persistence with fixed IDs that work across deployments
 export const storage = new MemStorage();

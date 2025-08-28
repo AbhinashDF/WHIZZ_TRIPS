@@ -1,0 +1,29 @@
+import { Handler } from '@netlify/functions';
+import express from 'express';
+import serverless from 'serverless-http';
+import { registerRoutes } from '../../server/routes';
+
+const app = express();
+
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// CORS middleware
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
+
+// Register routes
+registerRoutes(app);
+
+// Export as serverless function
+export const handler: Handler = serverless(app);
