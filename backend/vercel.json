@@ -2,8 +2,7 @@
   "buildCommand": "npm run build",
   "functions": {
     "api/index.js": {
-      "runtime": "@vercel/node@3.0.0",
-      "includeFiles": "dist/{server,shared}/**/*"
+      "runtime": "@vercel/node@3.0.0"
     }
   }
 }
