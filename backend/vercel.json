@@ -1,14 +1,14 @@
 {
-  "name": "vercel-ts-backend",
-  "version": "1.0.0",
-  "scripts": {
-    "build": "tsc",
-    "start": "node dist/api/index.js"
+  "functions": {
+    "api/index.js": {
+      "runtime": "nodejs18.x",
+      "includeFiles": "dist/{server,shared}/**/*"
+    }
   },
-  "dependencies": {
-    "express": "^4.19.0" 
-  },
-  "devDependencies": {
-    "typescript": "^5.3.0"
-  }
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "api/index.js"
+    }
+  ]
 }
