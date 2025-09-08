@@ -1,6 +1,7 @@
 {
+  "buildCommand": "npm run build",
   "functions": {
-    "api/index.js": {
+    "dist/api/index.js": {
       "runtime": "@vercel/node@3.0.0",
       "includeFiles": "dist/{server,shared}/**/*"
     }
@@ -8,7 +9,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "api/index.js"
+      "dest": "dist/api/index.js"
     }
   ]
 }
