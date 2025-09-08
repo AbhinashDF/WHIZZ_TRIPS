@@ -47,3 +47,4 @@ npm run build
 - `src/pages/` - Page components
 - `src/lib/` - Utility functions and configurations
 - `src/hooks/` - Custom React hooks
+
