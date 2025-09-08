@@ -1,14 +1,14 @@
 {
-  "functions": {
-    "api/index.ts": {
-      "runtime": "vercel-node@3.0.0",
-      "includeFiles": "{server,shared}/**/*"
-    }
+  "name": "vercel-ts-backend",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/api/index.js"
   },
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/index.ts"
-    }
-  ]
+  "dependencies": {
+    "express": "^4.19.0" 
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  }
 }
