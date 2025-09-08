@@ -1,14 +1,21 @@
-import { 
-  type User, type InsertUser,
-  type Destination, type InsertDestination,
-  type TripPackage, type InsertTripPackage,
-  type Booking, type InsertBooking,
-  type Contact, type InsertContact,
-  type Flight, type InsertFlight,
-  type Hotel, type InsertHotel
-} from "@shared/schema";
+import {
+    type Booking,
+    type Contact,
+    type Destination,
+    type Flight,
+    type Hotel,
+    type InsertBooking,
+    type InsertContact,
+    type InsertDestination,
+    type InsertFlight,
+    type InsertHotel,
+    type InsertTripPackage,
+    type InsertUser,
+    type TripPackage,
+    type User
+} from "@/src/api/shared/schema";
 import { randomUUID } from "crypto";
-import { sampleDestinations, samplePackages, sampleFlights, sampleHotels } from "./data/sample-data";
+import { sampleDestinations, sampleFlights, sampleHotels, samplePackages } from "./src/data/sample-data";
 
 export interface IStorage {
   // User operations

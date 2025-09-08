@@ -1,6 +1,6 @@
 import express from "express";
 import { z } from "zod";
-import { insertBookingSchema, insertContactSchema } from "./shared/schema";
+import { insertBookingSchema, insertContactSchema } from "./src/api/shared/schema";
 import { storage } from "./storage";
 
 const app = express();

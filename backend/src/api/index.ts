@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { z } from 'zod';
+import { storage } from '../../storage';
 import { insertBookingSchema, insertContactSchema } from '../shared/schema';
-import { storage } from '../storage';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Set CORS headers

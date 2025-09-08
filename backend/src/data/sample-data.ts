@@ -1,5 +1,4 @@
-import { randomUUID } from "crypto";
-import type { Destination, TripPackage, Flight, Hotel } from "@shared/schema";
+import type { Destination, Flight, Hotel, TripPackage } from "@/src/api/shared/schema";
 
 // Sample destinations - persistent data that survives deployment
 export const sampleDestinations: Destination[] = [
